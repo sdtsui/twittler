@@ -4,6 +4,10 @@
  */
 
 // set up data structures
+//streams.users is an array. 
+//each div gets a class
+//save the class name as a variable
+//got stream.users[shawndrost], loop over elements to create divs that can be inserted into the modal window
 window.streams = {};
 streams.home = [];
 streams.users = {};

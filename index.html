@@ -8,19 +8,27 @@
   </head>
  <ul></ul>
   <body>
-  	<h2> Twittler Tweets</h2>
-
+  	<h2> Twittler
+  		    <button>Tweet Counter</button>
+  		
+  		</h2>
+	<div class = "tweetHolder"></div>
     <script>
+
+
+    
     //alert('sup');
       $(document).ready(function(){
       	var tweetCount = 0;
-        var $body = $('body');
+        var $body = $('.tweetHolder');
         $body.html();
 		var tweetRefresh = function(){
 			var index = streams.home.length - 1;
         while(index >= tweetCount){
           var tweet = streams.home[index];
-          var $tweet = $('<div class=\'tweet\'></div>');
+          var testName = 'tweet'		  var user = tweet.user;
+		  //+user+' '
+          var $tweet = $('<div username=\''+user+ '\' class=\''+testName+'\'></div>');
           var $tweetTime = $('<div class=\'time\'></div>')
           var tweetTime = tweet.created_at
           var tweetContent = '@' + tweet.user + ': ' + tweet.message + '\n'+tweetTime;
@@ -33,11 +41,15 @@
           $tweet.appendTo($body);
           
           index -= 1;
-          tweetCount+=1;
 		}
+		tweetCount = streams.home.length;
 
        };
-    tweetRefresh();
+       window.setInterval(function(){
+       	tweetRefresh();
+       	
+       },200);
+
 	/*$tweet.text('@' + tweet.user + ': ' + tweet.message);
 	$tweet.appendTo($body);
 	$tweet.text('@' + tweet.user + ': ' + tweet.message);
@@ -49,11 +61,20 @@
 	//want to add an .on() event handler, so that once button gets clicked...
 	//a message that saays "this is the length of the tweets array" appears under the button.
 	$('button').on('click',function(){
-		$(this).next().remove()
-		$(this).text("Tweets"+streams.home.length)
+		//$(this).next().remove()
+		$(this).text(streams.home.length+"!")
 		tweetRefresh();
-		$(this).after('<div class=\'counter\'>'+tweetCount+'</div>')
+		//$(this).after('<div class=\'counter\'>'+tweetCount+'</div>')
 	})
+    $(".tweetHolder").on('click','.tweet',function(){
+    	//create a modal window
+      var username = $(this).attr('username');
+      //add all tweets to a box in the modal window
+      streams.users[username];
+    	}
+    );
+	
+	
 	//next: design....then segment
 	//Then add clicking -> see all of someone's tweets. What are modal windows?
       });
@@ -61,8 +82,9 @@
       
 
     </script>
-    <button>REFRESH</button>
-  
+
+  //<div idd = "hi" class="active dropdown-toggle"></div>
+  //<div class=active dropdown-toggle></div>
   
 </div>
   </body>

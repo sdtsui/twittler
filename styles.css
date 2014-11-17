@@ -1,14 +1,43 @@
 * {
-    border: 2px solid #000000;
+   
+}
+div {
+	height: 54px;
+	width: 488px;
+	border: 2px solid black;
+	border-radius: 1px;
+	white-space:pre-wrap;
+	position: relative;
+    right: 0px;
+    //width: 300px;
+    //background-color: #007a86;
+    //color:#FFFFFF;
+}
+div:hover{
+    background: @blue-dark;
+	
+}
+.tweetHolder{
+	overflow: auto;
+	border: 2px solid red;
+	border-radius: 20px;
+	width:488px;
+	height:905px;
+		white-space:pre-wrap;
+	//background-color: #007a86;
 }
 
-div {
-	height: 55px;
-	width: 1000px;
-	border: 2px solid black;
-	border-radius: 5px;
-	white-space:pre-wrap;
-}
 body{
 	white-space:pre-wrap;
+	//background-color: #00baae;
+	background-image: url("http://thenypost.files.wordpress.com/2013/12/dogememe.jpg")
+}
+h2 {
+	text-transform: lowercase;
+	text-indent: 50px;
+	height:63px;
+	width: 484px;
+	font-size: 300%;
+	
+	
 }
