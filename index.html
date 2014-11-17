@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<script src="styling.css"></script>
     <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles.css"/>
+		<title>Twittler</title>
   </head>
+ <ul></ul>
   <body>
+  	<h2> Twittler Tweets</h2>
+
     <script>
-
+    //alert('sup');
       $(document).ready(function(){
+      	var tweetCount = 0;
         var $body = $('body');
-        $body.html('');
-
-        var index = streams.home.length - 1;
-        while(index >= 0){
+        $body.html();
+		var tweetRefresh = function(){
+			var index = streams.home.length - 1;
+        while(index >= tweetCount){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweet = $('<div class=\'tweet\'></div>');
+          var $tweetTime = $('<div class=\'time\'></div>')
+          var tweetTime = tweet.created_at
+          var tweetContent = '@' + tweet.user + ': ' + tweet.message + '\n'+tweetTime;
+          //tweetContent.replace("\n","<br/>");
+          
+          $tweet.text( tweetContent);
+          //$tweetTime.text(tweetTime);
+          
+          //$tweetTime.appendTo($body);
           $tweet.appendTo($body);
+          
           index -= 1;
-        }
+          tweetCount+=1;
+		}
 
+       };
+    tweetRefresh();
+	/*$tweet.text('@' + tweet.user + ': ' + tweet.message);
+	$tweet.appendTo($body);
+	$tweet.text('@' + tweet.user + ': ' + tweet.message);
+	$tweet.appendTo($body);
+	$tweet.text('@' + tweet.user + ': ' + tweet.message);
+	$tweet.appendTo($body);*/
+	
+	//!!!
+	//want to add an .on() event handler, so that once button gets clicked...
+	//a message that saays "this is the length of the tweets array" appears under the button.
+	$('button').on('click',function(){
+		$(this).next().remove()
+		$(this).text("Tweets"+streams.home.length)
+		tweetRefresh();
+		$(this).after('<div class=\'counter\'>'+tweetCount+'</div>')
+	})
+	//next: design....then segment
+	//Then add clicking -> see all of someone's tweets. What are modal windows?
       });
+      
+      
 
     </script>
+    <button>REFRESH</button>
+  
+  
+</div>
   </body>
+      <script src="data_generator.js"></script>
 </html>
