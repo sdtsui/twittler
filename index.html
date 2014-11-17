@@ -67,10 +67,15 @@
 		//$(this).after('<div class=\'counter\'>'+tweetCount+'</div>')
 	})
     $(".tweetHolder").on('click','.tweet',function(){
-    	//create a modal window
+  		//alert('hi');
       var username = $(this).attr('username');
       //add all tweets to a box in the modal window
-      streams.users[username];
+      var alertHolder = "User History: \n\n\n";
+      for(var i=0;i<streams.users[username].length;i++){
+      	//alert(streams.users[username][5]);
+      	alertHolder = alertHolder + streams.users[username][i].message + '\n' + streams.users[username][i].created_at +'\n\n\n'; 
+      }
+      alert(alertHolder);
     	}
     );
 	
